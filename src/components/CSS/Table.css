@@ -1,46 +1,27 @@
-table {
-    caption-side: unset;
-    border-collapse: unset;
-    text-align: center;
-    background-color: #22223b;
-}
-
-.table {
-    width: 100%;
-    vertical-align: middle;
-    margin: 0 auto;
-    border: 2px solid #22223b;
-    border-radius: 10px;
+.boxshadow{
+box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .table>:not(caption)>*>* {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 16px;
     letter-spacing: 1px;
-    padding: 8px 10px;
+    /* padding: 8px 10px; */
     user-select: none;
-    text-transform: uppercase;
-    background-color: #22223b;
-    color: #c9ada7;
+    background-color: whitesmoke;
+    color: black;
     vertical-align: middle;
     text-align: center;
 }
 
-.table td {
-    text-transform: capitalize;
-    background-color: #c9ada7;
-    color: #22223b;
+.tableFixHead thead{
+    border-bottom: 3px solid #65447a;
 }
 
 .tableFixHead thead th{
+    text-transform: uppercase;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-}
-
-th,
-td {
-    border: 1px solid #22223b;
-    border-radius: 8px;
 }
 
 tbody {
@@ -52,10 +33,6 @@ tbody {
     height: 354px;
 }
 
-/* .tableFixHead thead {
-    background-color: #22223b;
-} */
-
 .tableFixHead thead th {   
     position: sticky;
     top: 0;
@@ -64,6 +41,19 @@ tbody {
 
 ::-webkit-scrollbar{
     display: none;
+}
+
+.title-table{
+    /* margin: 15px 10px; */
+    padding: 15px;
+    font-size: 20px;
+    letter-spacing: .5px;
+    background-color: #65447a;
+    color: whitesmoke;
+}
+
+.table-wrapper{
+    padding: 0 15px;
 }
 
 .btn-eye{

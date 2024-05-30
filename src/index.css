@@ -38,3 +38,9 @@ a{
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.line{
+  height: 3px;
+  margin: 10px 0;
+  background-color: #65447A;
+}

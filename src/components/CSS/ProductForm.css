@@ -22,7 +22,7 @@
     vertical-align: middle;
     background-color: whitesmoke;
     color: #65447a;
-    border: 3px solid #f2e9e4;
+    border: 1px solid lightgray;
     border-radius: 10px;
 }
 
@@ -39,7 +39,7 @@
 
 .input:focus,
 .textarea:focus {
-    border: 3px solid #65447a;
+    border: 1px solid #65447a;
     background-color: whitesmoke;
     color: #65447a;
     box-shadow: none;
@@ -61,7 +61,7 @@
     text-transform: uppercase;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border: 3px solid #048b51;
+    border: 1px solid #048b51;
     color: whitesmoke;
     transition: all .3s ease;
     cursor: pointer;
@@ -70,11 +70,11 @@
 .btn-submit:hover {
     background-color: #048b51;
     color: whitesmoke;
-    border: 3px solid #048b51;
+    border: 1px solid #048b51;
 }
 
 :not(.btn-check)+.btn:active {
     background-color: #22223b;
     color: #c9ada7;
-    border: 3px solid #c9ada7;
+    border: 1px solid #c9ada7;
 }

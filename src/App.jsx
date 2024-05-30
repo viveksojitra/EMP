@@ -4,7 +4,7 @@ import './components/CSS/ProductForm.css'
 import './components/CSS/Table.css'
 import './components/CSS/Header.css'
 import './App.css'
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
       <Row className="w-100">
         <Header />
-      </Row>  
+      </Row> 
     
       <Row className="row d-flex align-content-center">
         {/* Header */}
