@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  overflow-x: hidden;
+  background-color: whitesmoke;
+}
+
+.col {
+  padding: 0;
+}
+
+.p-left {
+  padding-left: .5rem;
+}
+
+.p-right {
+  padding-right: .5rem;
+}
+
+.row {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.container{
+  width: 1140px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 15px;
+}
