@@ -2,9 +2,10 @@
 import { faEye, faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import generateUniqueId from "generate-unique-id";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
+import { GetData } from "../../services/GetData";
 
 // Controlled Form With Single-State
 function ProductForm() {
@@ -20,7 +21,7 @@ function ProductForm() {
     });
 
     // Submit State
-    const [tableData, setTableData] = useState([]);
+    const [tableData, setTableData] = useState(GetData("database"));
 
     // Input Handle
     const handleInput = (event) => {
@@ -53,35 +54,42 @@ function ProductForm() {
         setTableData(deletedRecord);
     }
 
+    // Clear Button
+    const handleData = () => {
+        localStorage.clear();
+
+        setTableData([]);
+    }
+
     // Submit Handle
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (input.fname === '' || input.lname === '' || input.email === '' || input.address === '' || input.phone === '') {
-            return alert("*All input fields are required to be field!");
-        } else {
-            if (input.id) {
-                setTableData(tableData.map((record) => {
+        // if (input.fname === '' || input.lname === '' || input.email === '' || input.address === '' || input.phone === '') {
+        //     return alert("*All input fields are required to be field!");
+        // } else {
+        if (input.id) {
+            setTableData(tableData.map((record) => {
 
-                    if (record.id === input.id) {
-                        return { ...record, ...input }
-                    }
-                    else {
-                        return record
-                    }
-                }))
-            } else {
-                const idGen = {
-                    ...input,
-                    id: generateUniqueId({
-                        length: 4,
-                        useLetters: false,
-                    }),
+                if (record.id === input.id) {
+                    return { ...record, ...input }
                 }
-
-                setTableData([...tableData, idGen])
+                else {
+                    return record
+                }
+            }))
+        } else {
+            const idGen = {
+                ...input,
+                id: generateUniqueId({
+                    length: 4,
+                    useLetters: false,
+                }),
             }
+
+            setTableData([...tableData, idGen])
         }
+        // }
 
         setInput({
             id: '',
@@ -92,6 +100,10 @@ function ProductForm() {
             phone: '',
         });
     };
+
+    useEffect(() => {
+        localStorage.setItem("database", JSON.stringify(tableData))
+    }, [tableData])
 
     return (
         <>
@@ -145,9 +157,17 @@ function ProductForm() {
             <div className="line"></div>
 
             <div>
-                <h3 className="title-table m-0">Manage Employees</h3>
+                {/* Table Title */}
+                <div className="d-flex justify-content-between title-table p-0 align-items-center">
+                    <h3 className="title-table m-0">Manage Employees</h3>
+                    {/* submit */}
+                    <Button className="btn-clear d-flex me-2" type="button" onClick={handleData}>
+                            Clear
+                    </Button>
+                </div>
+
+                {/* Table */}
                 <div className="table-wrapper boxshadow pt-2">
-                    {/* Table */}
                     <section className="tableFixHead">
                         <Table className="table" striped bordered hover>
                             <thead>
