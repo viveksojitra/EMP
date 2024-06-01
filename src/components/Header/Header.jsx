@@ -5,9 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Header
 function Header() {
 
-    const tabs = ["home", "blog", "service", "about"];
-    let key = 0;
-
     return (
         <header>
             <div className="wrapper d-flex flex-wrap justify-content-between w-100 p-3 item-center">

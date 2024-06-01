@@ -5,7 +5,8 @@ import generateUniqueId from "generate-unique-id";
 import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
-import { GetData } from "../../services/GetData";
+import { getData } from "../../services/GetData";
+import { setData } from "../../services/SetData";
 
 // Controlled Form With Single-State
 function ProductForm() {
@@ -20,8 +21,8 @@ function ProductForm() {
         phone: '',
     });
 
-    // Submit State
-    const [tableData, setTableData] = useState(GetData("database"));
+    // Submit State & Get Data
+    const [tableData, setTableData] = useState(getData("database"));
 
     // Input Handle
     const handleInput = (event) => {
@@ -65,31 +66,31 @@ function ProductForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // if (input.fname === '' || input.lname === '' || input.email === '' || input.address === '' || input.phone === '') {
-        //     return alert("*All input fields are required to be field!");
-        // } else {
-        if (input.id) {
-            setTableData(tableData.map((record) => {
-
-                if (record.id === input.id) {
-                    return { ...record, ...input }
-                }
-                else {
-                    return record
-                }
-            }))
+        if (input.fname === '' || input.lname === '' || input.email === '' || input.address === '' || input.phone === '') {
+            return alert("*All input fields are required to be field!");
         } else {
-            const idGen = {
-                ...input,
-                id: generateUniqueId({
-                    length: 4,
-                    useLetters: false,
-                }),
-            }
+            if (input.id) {
+                setTableData(tableData.map((record) => {
 
-            setTableData([...tableData, idGen])
+                    if (record.id === input.id) {
+                        return { ...record, ...input }
+                    }
+                    else {
+                        return record
+                    }
+                }))
+            } else {
+                const idGen = {
+                    ...input,
+                    id: generateUniqueId({
+                        length: 4,
+                        useLetters: false,
+                    }),
+                }
+
+                setTableData([...tableData, idGen])
+            }
         }
-        // }
 
         setInput({
             id: '',
@@ -101,9 +102,10 @@ function ProductForm() {
         });
     };
 
+    // Set Data
     useEffect(() => {
-        localStorage.setItem("database", JSON.stringify(tableData))
-    }, [tableData])
+        setData("database", tableData);
+    }, [tableData]);
 
     return (
         <>
@@ -162,7 +164,7 @@ function ProductForm() {
                     <h3 className="title-table m-0">Manage Employees</h3>
                     {/* submit */}
                     <Button className="btn-clear d-flex me-2" type="button" onClick={handleData}>
-                            Clear
+                        Clear
                     </Button>
                 </div>
 
